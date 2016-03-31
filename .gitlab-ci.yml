@@ -1,8 +1,24 @@
+# GitLab CI Docker Image
 image: node:5.9.1
+# Build - Build necessary JS files
+# Test - Run tests
+# Deploy - Deploy application to S3/ElasticBeanstalk
 stages:
   - build
   - test
   - deploy
+# Configuration
+variables:
+  AWS_ACCESS_KEY_ID: "" # Should have access to both S3/EB
+  AWS_SECRET_ACCESS_KEY: ""
+  AWS_DEFAULT_REGION: "us-east-1" # Or, wherever you are
+  EB_APP_NAME: "" # ElasticBeanstalk Application Name
+  EB_APP_ENV: "" # ElasticBeanstalk Application Environment
+  S3_BUCKET: "" # S3 bucket for ElasticBeanstalk
+  S3_KEY: "" # S3 folder to upload built app
+# Job: Build
+# Installs npm packages, transpiles ES6 -> ES5
+# Passes node_modules/, dist/ onto next steps using artifacts
 build:
   stage: build
   script:
@@ -14,12 +30,18 @@ build:
       - dist/
   tags:
     - nodejs-app
+# Job: Test
+# Run tests against our application
+# If this fails, we do not deploy
 test:
   stage: test
   script:
     - ./bin/test
   tags:
     - nodejs-app
+# Job: Deploy
+# Zips the contents of our built application, uploads to S3
+# Configures a new EB version and switches to that version
 deploy:
   stage: test
   script:

@@ -1,16 +1,5 @@
 #!/bin/bash
 
-# Setup the environment
-export AWS_ACCESS_KEY_ID="MY_KEY"
-export AWS_SECRET_ACCESS_KEY="MY_SECRET"
-export AWS_DEFAULT_REGION="us-east-1"
-
-# Configuration
-EB_APP_NAME="elasticbeanstalk-app-name"
-EB_APP_ENV="elasticbeanstalk-env-name"
-S3_BUCKET="s3-bucket-name"
-S3_KEY="s3-key-folder"
-
 # Install AWS CLI
 curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 python get-pip.py
