@@ -15,11 +15,11 @@ log.info({ environment: process.env }, 'Environment: %s', process.env.NODE_ENV)
 server.route({
   method: 'GET',
   path: '/',
-  handler: function (request, reply) {
+  handler: (request, reply) => {
     reply({
       message: 'Hello, ElasticBeanstalk!',
     })
-  }
+  },
 })
 
 // Run!

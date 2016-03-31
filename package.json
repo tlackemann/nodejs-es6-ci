@@ -6,7 +6,8 @@
   "scripts": {
     "start": "./bin/start",
     "build": "./bin/build",
-    "test": "./bin/test"
+    "test": "./bin/test",
+    "lint": "./bin/lint"
   },
   "repository": {
     "type": "git",
