@@ -1,0 +1,8 @@
+{
+  "app": {
+    "port": 9000
+  },
+  "log": {
+    "level": "debug"
+  }
+}

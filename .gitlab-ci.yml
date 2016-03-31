@@ -1,0 +1,28 @@
+image: node:5.9.1
+stages:
+  - build
+  - test
+  - deploy
+build:
+  stage: build
+  script:
+    - npm install
+    - ./bin/build
+  artifacts:
+    paths:
+      - node_modules/
+      - dist/
+  tags:
+    - nodejs-app
+test:
+  stage: test
+  script:
+    - ./bin/test
+  tags:
+    - nodejs-app
+deploy:
+  stage: test
+  script:
+    - ./bin/deploy
+  tags:
+    - nodejs-app
