@@ -43,7 +43,7 @@ test:
 # Zips the contents of our built application, uploads to S3
 # Configures a new EB version and switches to that version
 deploy:
-  stage: test
+  stage: deploy 
   script:
     - ./bin/deploy
   tags:
